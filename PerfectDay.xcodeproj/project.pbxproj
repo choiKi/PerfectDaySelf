@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B1657E1CC08D0203CF86130E /* Pods_PerfectDay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E625C1092E052695FAB8B4FB /* Pods_PerfectDay.framework */; };
 		C472463D28300E17007E0A71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C472463C28300E17007E0A71 /* AppDelegate.swift */; };
 		C472463F28300E17007E0A71 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C472463E28300E17007E0A71 /* SceneDelegate.swift */; };
 		C472464128300E17007E0A71 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C472464028300E17007E0A71 /* ViewController.swift */; };
@@ -17,6 +18,11 @@
 		C472465728300E18007E0A71 /* PerfectDayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C472465628300E18007E0A71 /* PerfectDayTests.swift */; };
 		C472466128300E18007E0A71 /* PerfectDayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C472466028300E18007E0A71 /* PerfectDayUITests.swift */; };
 		C472466328300E18007E0A71 /* PerfectDayUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C472466228300E18007E0A71 /* PerfectDayUITestsLaunchTests.swift */; };
+		C49897A428332FE000BA4EBE /* AddView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C49897A328332FE000BA4EBE /* AddView.storyboard */; };
+		C49897A628333A8F00BA4EBE /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49897A528333A8F00BA4EBE /* ScheduleTableViewCell.swift */; };
+		C49897A828334CC500BA4EBE /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49897A728334CC500BA4EBE /* EditViewController.swift */; };
+		C49897AA28334CD400BA4EBE /* EditView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C49897A928334CD400BA4EBE /* EditView.storyboard */; };
+		C4BEACB12831F1ED0096FD6A /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEACB02831F1ED0096FD6A /* AddViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3785E3D898302C9B92A90C97 /* Pods-PerfectDay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerfectDay.debug.xcconfig"; path = "Target Support Files/Pods-PerfectDay/Pods-PerfectDay.debug.xcconfig"; sourceTree = "<group>"; };
+		44B00C0D1BDF8E761ED719AB /* Pods-PerfectDay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerfectDay.release.xcconfig"; path = "Target Support Files/Pods-PerfectDay/Pods-PerfectDay.release.xcconfig"; sourceTree = "<group>"; };
 		C472463928300E17007E0A71 /* PerfectDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PerfectDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C472463C28300E17007E0A71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C472463E28300E17007E0A71 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +59,12 @@
 		C472465C28300E18007E0A71 /* PerfectDayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PerfectDayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C472466028300E18007E0A71 /* PerfectDayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfectDayUITests.swift; sourceTree = "<group>"; };
 		C472466228300E18007E0A71 /* PerfectDayUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfectDayUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C49897A328332FE000BA4EBE /* AddView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddView.storyboard; sourceTree = "<group>"; };
+		C49897A528333A8F00BA4EBE /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		C49897A728334CC500BA4EBE /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		C49897A928334CD400BA4EBE /* EditView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditView.storyboard; sourceTree = "<group>"; };
+		C4BEACB02831F1ED0096FD6A /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		E625C1092E052695FAB8B4FB /* Pods_PerfectDay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PerfectDay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1657E1CC08D0203CF86130E /* Pods_PerfectDay.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +93,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		197CAABD229A714AD36497C6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3785E3D898302C9B92A90C97 /* Pods-PerfectDay.debug.xcconfig */,
+				44B00C0D1BDF8E761ED719AB /* Pods-PerfectDay.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7EBC9FC100921C6F2B122925 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E625C1092E052695FAB8B4FB /* Pods_PerfectDay.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C472463028300E17007E0A71 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +117,8 @@
 				C472465528300E18007E0A71 /* PerfectDayTests */,
 				C472465F28300E18007E0A71 /* PerfectDayUITests */,
 				C472463A28300E17007E0A71 /* Products */,
+				197CAABD229A714AD36497C6 /* Pods */,
+				7EBC9FC100921C6F2B122925 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +135,8 @@
 		C472463B28300E17007E0A71 /* PerfectDay */ = {
 			isa = PBXGroup;
 			children = (
+				C4BEACAF2831F1B30096FD6A /* StoryBoard */,
+				C4BEACAE2831F1AC0096FD6A /* VC */,
 				C472463C28300E17007E0A71 /* AppDelegate.swift */,
 				C472463E28300E17007E0A71 /* SceneDelegate.swift */,
 				C472464028300E17007E0A71 /* ViewController.swift */,
@@ -130,6 +166,25 @@
 			path = PerfectDayUITests;
 			sourceTree = "<group>";
 		};
+		C4BEACAE2831F1AC0096FD6A /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				C4BEACB02831F1ED0096FD6A /* AddViewController.swift */,
+				C49897A528333A8F00BA4EBE /* ScheduleTableViewCell.swift */,
+				C49897A728334CC500BA4EBE /* EditViewController.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		C4BEACAF2831F1B30096FD6A /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				C49897A328332FE000BA4EBE /* AddView.storyboard */,
+				C49897A928334CD400BA4EBE /* EditView.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,9 +192,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C472466628300E18007E0A71 /* Build configuration list for PBXNativeTarget "PerfectDay" */;
 			buildPhases = (
+				88911D9B6EA1EA2C9805B3CE /* [CP] Check Pods Manifest.lock */,
 				C472463528300E17007E0A71 /* Sources */,
 				C472463628300E17007E0A71 /* Frameworks */,
 				C472463728300E17007E0A71 /* Resources */,
+				7FFF7B38031791A1281EE82D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -235,6 +292,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C472464C28300E18007E0A71 /* LaunchScreen.storyboard in Resources */,
+				C49897A428332FE000BA4EBE /* AddView.storyboard in Resources */,
+				C49897AA28334CD400BA4EBE /* EditView.storyboard in Resources */,
 				C472464928300E18007E0A71 /* Assets.xcassets in Resources */,
 				C472464428300E17007E0A71 /* Main.storyboard in Resources */,
 			);
@@ -256,15 +315,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7FFF7B38031791A1281EE82D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PerfectDay/Pods-PerfectDay-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PerfectDay/Pods-PerfectDay-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PerfectDay/Pods-PerfectDay-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		88911D9B6EA1EA2C9805B3CE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PerfectDay-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C472463528300E17007E0A71 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4BEACB12831F1ED0096FD6A /* AddViewController.swift in Sources */,
 				C472464128300E17007E0A71 /* ViewController.swift in Sources */,
+				C49897A628333A8F00BA4EBE /* ScheduleTableViewCell.swift in Sources */,
 				C472463D28300E17007E0A71 /* AppDelegate.swift in Sources */,
 				C472464728300E17007E0A71 /* PerfectDay.xcdatamodeld in Sources */,
 				C472463F28300E17007E0A71 /* SceneDelegate.swift in Sources */,
+				C49897A828334CC500BA4EBE /* EditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +542,7 @@
 		};
 		C472466728300E18007E0A71 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3785E3D898302C9B92A90C97 /* Pods-PerfectDay.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -466,6 +571,7 @@
 		};
 		C472466828300E18007E0A71 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44B00C0D1BDF8E761ED719AB /* Pods-PerfectDay.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
