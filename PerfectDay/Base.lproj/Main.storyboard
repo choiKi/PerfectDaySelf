@@ -134,14 +134,89 @@
         <!--오늘의 계획-->
         <scene sceneID="S60-dK-ZGZ">
             <objects>
-                <viewController id="2E3-Lt-DGe" sceneMemberID="viewController">
+                <viewController id="2E3-Lt-DGe" customClass="TodayViewController" customModule="PerfectDay" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8Ja-BE-E3m">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mKD-fr-pTK">
+                                <rect key="frame" x="25" y="69" width="364" height="744"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 계획" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7t-tJ-Pb5">
+                                        <rect key="frame" x="0.0" y="0.0" width="364" height="42"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="35"/>
+                                        <color key="textColor" systemColor="linkColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="날짜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWH-zU-XQX">
+                                        <rect key="frame" x="0.0" y="62" width="364" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                                        <color key="textColor" red="0.3521689636231895" green="0.46221507096827208" blue="0.69331910438144329" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Evh-Vb-kHG">
+                                        <rect key="frame" x="0.0" y="112" width="364" height="632"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="todayCell" id="p7H-mq-U4q" customClass="TodayTableViewCell" customModule="PerfectDay" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="44.5" width="364" height="60.5"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="p7H-mq-U4q" id="Hqg-OG-QhU">
+                                                    <rect key="frame" x="0.0" y="0.0" width="364" height="60.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ILA-CM-fjk">
+                                                            <rect key="frame" x="15" y="15" width="334" height="30.5"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6w-G0-2b2">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="167" height="30.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                                                    <color key="textColor" systemColor="systemBlueColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aqe-E6-n4l">
+                                                                    <rect key="frame" x="167" y="0.0" width="167" height="30.5"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="41.5" id="NPC-vS-ubl"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                                                    <color key="textColor" systemColor="systemTealColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="ILA-CM-fjk" firstAttribute="leading" secondItem="Hqg-OG-QhU" secondAttribute="leading" constant="15" id="5Ol-vk-aPU"/>
+                                                        <constraint firstItem="ILA-CM-fjk" firstAttribute="top" secondItem="Hqg-OG-QhU" secondAttribute="top" constant="15" id="Fkb-md-6vo"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ILA-CM-fjk" secondAttribute="trailing" constant="15" id="L29-Mn-gzr"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ILA-CM-fjk" secondAttribute="bottom" constant="15" id="k0w-0z-xf8"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="time" destination="Aqe-E6-n4l" id="GJU-sH-vJI"/>
+                                                    <outlet property="title" destination="z6w-G0-2b2" id="uba-s8-pEt"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="BTw-7O-R12"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="BTw-7O-R12" firstAttribute="trailing" secondItem="mKD-fr-pTK" secondAttribute="trailing" constant="25" id="31e-Mc-cfE"/>
+                            <constraint firstItem="mKD-fr-pTK" firstAttribute="top" secondItem="BTw-7O-R12" secondAttribute="top" constant="25" id="GdW-xd-Z6o"/>
+                            <constraint firstItem="BTw-7O-R12" firstAttribute="bottom" secondItem="mKD-fr-pTK" secondAttribute="bottom" id="xiM-EK-o9Q"/>
+                            <constraint firstItem="mKD-fr-pTK" firstAttribute="leading" secondItem="BTw-7O-R12" secondAttribute="leading" constant="25" id="yA5-zg-OBw"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="오늘의 계획" selectedImage="timer" catalog="system" id="nwb-R7-JEX"/>
+                    <connections>
+                        <outlet property="tableView" destination="Evh-Vb-kHG" id="CPz-V5-x7m"/>
+                        <outlet property="today" destination="uWH-zU-XQX" id="l9u-Bq-aMo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3za-Gw-AA8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -192,6 +267,9 @@
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="timer" catalog="system" width="128" height="121"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B1657E1CC08D0203CF86130E /* Pods_PerfectDay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E625C1092E052695FAB8B4FB /* Pods_PerfectDay.framework */; };
+		C457D763283524FC00DCC2B5 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C457D762283524FC00DCC2B5 /* TodayViewController.swift */; };
+		C457D766283526CB00DCC2B5 /* TodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C457D765283526CB00DCC2B5 /* TodayTableViewCell.swift */; };
 		C472463D28300E17007E0A71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C472463C28300E17007E0A71 /* AppDelegate.swift */; };
 		C472463F28300E17007E0A71 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C472463E28300E17007E0A71 /* SceneDelegate.swift */; };
 		C472464128300E17007E0A71 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C472464028300E17007E0A71 /* ViewController.swift */; };
@@ -45,6 +47,8 @@
 /* Begin PBXFileReference section */
 		3785E3D898302C9B92A90C97 /* Pods-PerfectDay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerfectDay.debug.xcconfig"; path = "Target Support Files/Pods-PerfectDay/Pods-PerfectDay.debug.xcconfig"; sourceTree = "<group>"; };
 		44B00C0D1BDF8E761ED719AB /* Pods-PerfectDay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PerfectDay.release.xcconfig"; path = "Target Support Files/Pods-PerfectDay/Pods-PerfectDay.release.xcconfig"; sourceTree = "<group>"; };
+		C457D762283524FC00DCC2B5 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		C457D765283526CB00DCC2B5 /* TodayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTableViewCell.swift; sourceTree = "<group>"; };
 		C472463928300E17007E0A71 /* PerfectDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PerfectDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C472463C28300E17007E0A71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C472463E28300E17007E0A71 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -172,6 +176,8 @@
 				C4BEACB02831F1ED0096FD6A /* AddViewController.swift */,
 				C49897A528333A8F00BA4EBE /* ScheduleTableViewCell.swift */,
 				C49897A728334CC500BA4EBE /* EditViewController.swift */,
+				C457D762283524FC00DCC2B5 /* TodayViewController.swift */,
+				C457D765283526CB00DCC2B5 /* TodayTableViewCell.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -366,6 +372,8 @@
 				C472464128300E17007E0A71 /* ViewController.swift in Sources */,
 				C49897A628333A8F00BA4EBE /* ScheduleTableViewCell.swift in Sources */,
 				C472463D28300E17007E0A71 /* AppDelegate.swift in Sources */,
+				C457D766283526CB00DCC2B5 /* TodayTableViewCell.swift in Sources */,
+				C457D763283524FC00DCC2B5 /* TodayViewController.swift in Sources */,
 				C472464728300E17007E0A71 /* PerfectDay.xcdatamodeld in Sources */,
 				C472463F28300E17007E0A71 /* SceneDelegate.swift in Sources */,
 				C49897A828334CC500BA4EBE /* EditViewController.swift in Sources */,
