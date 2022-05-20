@@ -51,6 +51,16 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         navigationController?.pushViewController(addVC, animated: true)
     }
 
+    // 현재일로 부터 지나면 데이터를 HistoryDB로 옮김
+    func dataFutureToPast() {
+        
+        let scheduleListArray = realm.objects(ScheduleList1.self)
+        
+        dateFormatter.dateFormat = "YY년 MM월 dd일"
+        let today = dateFormatter.string(from: Date())
+        
+        
+    }
 
 }
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
@@ -88,7 +98,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         self.navigationController?.pushViewController(editVC, animated: true)
         
     }
-    
    
     
     
@@ -124,6 +133,18 @@ extension ViewController {
          tableView.reloadData()
         
      }
+    
+    // 지난 날 클릭 금지
+    func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
+        if date .compare(Date()) == .orderedAscending {
+            // 지난 날짜 달력 클릭 금지
+            // 한달 이상 뒤 날짜 달력 클릭 금지
+            return false
+        }else {
+            return true
+        }
+    }
+    
 
 }
 
