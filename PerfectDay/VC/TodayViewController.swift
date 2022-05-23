@@ -27,7 +27,11 @@ class TodayViewController: UIViewController,UITableViewDelegate, UITableViewData
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        tableView.reloadData()
         
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

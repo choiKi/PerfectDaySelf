@@ -25,6 +25,7 @@
 		C49897A828334CC500BA4EBE /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C49897A728334CC500BA4EBE /* EditViewController.swift */; };
 		C49897AA28334CD400BA4EBE /* EditView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C49897A928334CD400BA4EBE /* EditView.storyboard */; };
 		C4BEACB12831F1ED0096FD6A /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEACB02831F1ED0096FD6A /* AddViewController.swift */; };
+		C4EE7CB6283B2DA40008EE58 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EE7CB5283B2DA40008EE58 /* HistoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		C49897A728334CC500BA4EBE /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		C49897A928334CD400BA4EBE /* EditView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditView.storyboard; sourceTree = "<group>"; };
 		C4BEACB02831F1ED0096FD6A /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		C4EE7CB5283B2DA40008EE58 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		E625C1092E052695FAB8B4FB /* Pods_PerfectDay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PerfectDay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -178,6 +180,7 @@
 				C49897A728334CC500BA4EBE /* EditViewController.swift */,
 				C457D762283524FC00DCC2B5 /* TodayViewController.swift */,
 				C457D765283526CB00DCC2B5 /* TodayTableViewCell.swift */,
+				C4EE7CB5283B2DA40008EE58 /* HistoryViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				C4BEACB12831F1ED0096FD6A /* AddViewController.swift in Sources */,
 				C472464128300E17007E0A71 /* ViewController.swift in Sources */,
 				C49897A628333A8F00BA4EBE /* ScheduleTableViewCell.swift in Sources */,
+				C4EE7CB6283B2DA40008EE58 /* HistoryViewController.swift in Sources */,
 				C472463D28300E17007E0A71 /* AppDelegate.swift in Sources */,
 				C457D766283526CB00DCC2B5 /* TodayTableViewCell.swift in Sources */,
 				C457D763283524FC00DCC2B5 /* TodayViewController.swift in Sources */,
@@ -562,6 +566,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -591,6 +596,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
