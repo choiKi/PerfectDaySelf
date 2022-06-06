@@ -25,12 +25,14 @@ class AddViewController: UIViewController {
     var selectTime: String = ""
     var selectedDay: String = "dd"
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
         selectedDateLabel.text = selectedDay
+        
     }
     
     @IBAction func pressSaveBtn(_ sender: UIButton) {
@@ -52,35 +54,49 @@ class AddViewController: UIViewController {
     
     func saveData() {
         
-        
+        var selectedDayArray = realm.objects(ScheduleByDate1.self).filter("date = '\(selectedDay)'")
+        var selectedDayArrayExistTime = selectedDayArray.filter("time = '\(selectTime)'")
         if titleTextField.text != "" , selectTime != "" {
+            
             let scheduleByDate = ScheduleByDate1()
+            let scheduleListArray = ScheduleList1()
             
             scheduleByDate.date = selectedDay
             scheduleByDate.title = titleTextField.text!
             scheduleByDate.time = selectTime
             scheduleByDate.success = false
             
-            if realm.objects(ScheduleList1.self).isEmpty == true {
-                let scheduleListArray = ScheduleList1()
-                scheduleListArray.scheduleList.append(scheduleByDate)
-                
-                try! realm.write{
-                    realm.add(scheduleListArray)
-                }
-            } else {
-                try! realm.write {
-                                let scheduleListArray = realm.objects(
-                                    ScheduleList1.self)
-                                scheduleListArray.first?.scheduleList.append(scheduleByDate)
+            print("선택된 날짜들 :  \(selectedDayArray)")
+            print("선택된 날짜의 시간 :  \(selectedDayArrayExistTime)")
+            
+            if selectedDayArrayExistTime.isEmpty {
+                print("겹치는 시간이 없음")
+                if realm.objects(ScheduleList1.self).isEmpty == true {
+                        let scheduleListArray = ScheduleList1()
+                        scheduleListArray.scheduleList.append(scheduleByDate)
+                        
+                        try! realm.write{
+                            realm.add(scheduleListArray)
                         }
+                    } else {
+                        try! realm.write {
+                                        let scheduleListArray = realm.objects(
+                                            ScheduleList1.self)
+                                        scheduleListArray.first?.scheduleList.append(scheduleByDate)
+                                }
+                        }
+                    
+                } else {
+                    alert2()
+                }
+            }else {
+                alert1()
             }
-        } else {
-            alert()
-        }
+                
+            
     }
     
-    func alert() {
+    func alert1() {
         let nilAlert = UIAlertController(title: " 계획을 입력해주세요 ",
                                          message: "시간은 설정하셨나요?",
                                          preferredStyle: .alert)
@@ -90,6 +106,15 @@ class AddViewController: UIViewController {
         present(nilAlert, animated: true, completion: nil)
     }
     
+    func alert2() {
+        let nilAlert = UIAlertController(title: " 이미 계획된 시간입니다. ",
+                                         message: "시간을 다시 확인해주세요",
+                                         preferredStyle: .alert)
+        let onAction = UIAlertAction(title: "알겠습니다", style: .cancel , handler: nil)
+                   
+        nilAlert.addAction(onAction)
+        present(nilAlert, animated: true, completion: nil)
+    }
     
 
 }

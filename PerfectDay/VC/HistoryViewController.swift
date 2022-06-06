@@ -6,12 +6,17 @@
 //
 
 import UIKit
+import RealmSwift
 
 class HistoryViewController: UIViewController {
     
     @IBOutlet weak var viewContainer: UIStackView!
     @IBOutlet weak var textViewContainer: UIView!
     @IBOutlet weak var infoText: UILabel!
+    @IBOutlet weak var segmentView: UISegmentedControl!
+    
+    let realm = try! Realm()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +26,9 @@ class HistoryViewController: UIViewController {
         infoTextSetting()
         
     }
+    
     func infoTextSetting() {
+        
         infoText.translatesAutoresizingMaskIntoConstraints = false
         infoText.centerXAnchor.constraint(equalTo: textViewContainer.centerXAnchor).isActive = true
         infoText.centerYAnchor.constraint(equalTo: textViewContainer.centerYAnchor).isActive = true
@@ -31,6 +38,14 @@ class HistoryViewController: UIViewController {
         infoText.numberOfLines = 5
     }
 
+    func scoreCalculator() {
+        
+        let scheduleListArray = realm.objects(ScheduleList1.self)
+        
+        
+        
+        
+    }
     
 
 }

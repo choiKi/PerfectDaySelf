@@ -43,6 +43,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        sortedTable()
         tableView.reloadData()
     }
     
@@ -52,6 +53,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         addVC.selectedDay = todayLabel.text!
         navigationController?.pushViewController(addVC, animated: true)
     }
+    
 
     // 현재일로 부터 지나면 데이터를 HistoryDB로 옮김
     func dataFutureToPast() {
@@ -98,7 +100,12 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     }
 
 }
+
+// TableView 관련 모음
+
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let scheduleByDate = realm.objects(ScheduleByDate1.self)
@@ -133,6 +140,54 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         self.navigationController?.pushViewController(editVC, animated: true)
         
     }
+    func removeTarget(target: String ,Rmtarget string : String) -> String {
+        return target.components(separatedBy: string).joined()
+    }
+    
+    func sortedTable() {
+        
+        let selectedDayArray = realm.objects(ScheduleByDate1.self).filter("date = '\(selectedDay)'")
+        let selectedDayList = realm.objects(ScheduleList1.self).first?.scheduleList.filter("date = '\(selectedDay)'")
+        print(" 정렬 전 : \(selectedDayArray)")
+        var timeArray = [String]()
+        var timeSetArray = [String]()
+        var timeIntArray = [Int]()
+
+        for index in 0 ..< selectedDayArray.count {
+            timeArray.append(selectedDayArray[index].time)
+        }
+        print("저장된 시간: \(timeArray)")
+        for temp in 0 ..< timeArray.count {
+            timeSetArray.append(removeTarget(target: timeArray[temp], Rmtarget: ":"))
+        }
+        print(timeSetArray)
+        // int로 변형 성공
+        for index in 0 ..< timeSetArray.count {
+            timeIntArray.append(Int(timeSetArray[index])!)
+        }
+        print(timeIntArray)
+        // 정렬하기
+        if timeIntArray.count > 1 {
+            
+            for stand in 1 ..< timeIntArray.count {
+                for index in stride(from: stand, to: 0, by: -1) {
+                    if timeIntArray[index] < timeIntArray[index - 1] {
+                        timeIntArray.swapAt(index, index - 1)
+                        // selectedDayArray 정렬
+                    }else {
+                        break
+                    }
+                }
+            }
+             
+            print("정렬된 시간: \(timeIntArray)")
+            // 정렬된 timeIntArray기준으로 Realm순서 정렬
+        }
+       
+        
+    }
+    
+    
    
     
     
@@ -196,7 +251,6 @@ extension Date {
         return Calendar.current.date(byAdding: .day, value: -30, to: self)!
     }
 }
-
 
 
 class ScheduleByDate1: Object {

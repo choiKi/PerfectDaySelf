@@ -68,27 +68,60 @@ class EditViewController: UIViewController {
     }
     
     @IBAction func pressEditButton(_ sender: UIButton) {
-        let scheduleByDate = realm.objects(ScheduleByDate1.self)
-        let updateScheduleTitle = scheduleByDate.filter("title =='\(paramTitle)' && date =='\(selectedDay)'")
-        let updateScheduleTime = scheduleByDate.filter("time =='\(paramTime)' && date =='\(selectedDay)'")
         
-        if editTextField.text != "" {
-            try! realm.write{
-                updateScheduleTitle.first?.title = editTextField.text!
-                updateScheduleTime.first?.time = selectTime
-            }
-        }else {
-            alert()
-        }
+        overlapTest()
+        
         navigationController?.popViewController(animated: true)
         vc.tableView?.reloadData()
     }
     
+    func overlapTest() {
+        
+        var selectedDayArray = realm.objects(ScheduleByDate1.self).filter("date = '\(selectedDay)'")
+        var selectedDayArrayExistTime = selectedDayArray.filter("time = '\(selectTime)'")
+        
+        let scheduleByDate = realm.objects(ScheduleByDate1.self)
+        let updateScheduleTitle = scheduleByDate.filter("title =='\(paramTitle)' && date =='\(selectedDay)'")
+        let updateScheduleTime = scheduleByDate.filter("time =='\(paramTime)' && date =='\(selectedDay)'")
+        
+        
+        if editTextField.text != "" {
+            
+            
+            print("선택된 날짜들 :  \(selectedDayArray)")
+            print("선택된 날짜의 시간 :  \(selectedDayArrayExistTime)")
+            
+            if selectedDayArrayExistTime.isEmpty {
+                
+                print("겹치는 시간 없음")
+                
+                try! realm.write{
+                    updateScheduleTitle.first?.title = editTextField.text!
+                    updateScheduleTime.first?.time = selectTime
+                }
+            } else {
+                alert2()
+            }
+        }else {
+            alert()
+        }
+        
+    }
     func alert() {
         let nilAlert = UIAlertController(title: " 계획을 입력해주세요 ",
                                          message: "",
                                          preferredStyle: .alert)
         let onAction = UIAlertAction(title: "네, 알겠습니다.", style: .cancel , handler: nil)
+                   
+        nilAlert.addAction(onAction)
+        present(nilAlert, animated: true, completion: nil)
+    }
+    
+    func alert2() {
+        let nilAlert = UIAlertController(title: " 이미 계획된 시간입니다. ",
+                                         message: "시간을 다시 확인해주세요",
+                                         preferredStyle: .alert)
+        let onAction = UIAlertAction(title: "알겠습니다", style: .cancel , handler: nil)
                    
         nilAlert.addAction(onAction)
         present(nilAlert, animated: true, completion: nil)
