@@ -18,13 +18,9 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
 
     
     let dateFormatter = DateFormatter()
-    
     let realm = try! Realm()
-    
-    
     var selectedDay = ""
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -43,7 +39,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        sortedTable()
+        sortedDate()
         tableView.reloadData()
     }
     
@@ -70,18 +66,23 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
         print("yesterday = \(yesterday)")
         // db에 있는 YY년 MM월 dd일 을 YYMMdd형태로 바꿈
         
-        let sss =  schedulePast.first?.date.components(separatedBy: [" ", "년", "월", "일"])
-        var ssss = sss?.joined(separator: "")
-        print(ssss)
+        // 여기 작성해야됨 !!
+        // db의 있는 날들 array로 다 받아오고 (for)
+        // array에서 오늘보다 과거의날이 있을경우 (while)
+        // 그 date해당 데이터 싹다 history 로 넘김
+        // 그 date해당 데이터 싹다 현재데이터에서 삭제!
+        // 오늘 기준으로 30일 이 지나면 history에서도 삭제!
+                
+        let sepDay =  schedulePast.first?.date.components(separatedBy: [" ", "년", "월", "일"])
+        let yymmddDay = sepDay?.joined(separator: "")
+        print(yymmddDay!)
         
-        guard let ssss = ssss else {
-            return
-        }
+        guard let ymdDay = yymmddDay else { return }
         // 데이터의 날짜가 오늘보다 전날인 데이터가 존재하면
-        if Int(ssss)! < Int(today)! {
+        if Int(ymdDay)! < Int(today)! {
             print("past exist")
             
-            // while Int(ssss)! < Int(today)!
+            // while Int(ymdDay)! < Int(today)!
             var filterPast = schedulePast.first?.date.components(separatedBy: [" ", "년", "월", "일"])
             var joinFilterPast = filterPast?.joined(separator: "")
             
@@ -91,12 +92,7 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
             
         }else {
             print("no past")
-            print("dd")
         }
-        
-
-        
-        
     }
 
 }
@@ -104,8 +100,6 @@ class ViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource
 // TableView 관련 모음
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
-    
-
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let scheduleByDate = realm.objects(ScheduleByDate1.self)
@@ -116,13 +110,19 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let scheduleListArray = realm.objects(ScheduleList1.self)
+        var selectedDayArray = realm.objects(ScheduleByDate1.self).filter("date = '\(selectedDay)'")
+        selectedDayArray = selectedDayArray.sorted(byKeyPath: "time", ascending: true)
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! ScheduleTableViewCell
         
+        /*
+         let scheduleListArray = realm.objects(ScheduleList1.self)
          cell.titleLabel.text = scheduleListArray.first?.scheduleList.filter("date = '\(selectedDay)'")[indexPath.row].title
          cell.timeLabel.text = scheduleListArray.first?.scheduleList.filter("date = '\(selectedDay)'")[indexPath.row].time
+        */
         
+        cell.titleLabel.text = selectedDayArray[indexPath.row].title
+        cell.timeLabel.text = selectedDayArray[indexPath.row].time
         return cell
     }
     
@@ -130,12 +130,21 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         let scheduleListArray = realm.objects(ScheduleList1.self)
         
+        var selectedDayArray = realm.objects(ScheduleByDate1.self).filter("date = '\(selectedDay)'")
+        selectedDayArray = selectedDayArray.sorted(byKeyPath: "time", ascending: true)
+        
         let editVC = UIStoryboard(name: "EditView", bundle: nil).instantiateViewController(withIdentifier: "EditViewController") as! EditViewController
         
+        editVC.paramTitle = selectedDayArray[indexPath.row].title
+        editVC.paramTime = selectedDayArray[indexPath.row].time
+        editVC.paramSuccess = selectedDayArray[indexPath.row].success
+        editVC.selectedDay = todayLabel.text!
+        /*
         editVC.paramTitle = (scheduleListArray.first?.scheduleList.filter("date = '\(selectedDay)'")[indexPath.row].title)!
         editVC.paramTime = (scheduleListArray.first?.scheduleList.filter("date = '\(selectedDay)'")[indexPath.row].time)!
         editVC.paramSuccess = (scheduleListArray.first?.scheduleList.filter("date = '\(selectedDay)'")[indexPath.row].success)!
         editVC.selectedDay = todayLabel.text!
+         */
         
         self.navigationController?.pushViewController(editVC, animated: true)
         
@@ -144,48 +153,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return target.components(separatedBy: string).joined()
     }
     
-    func sortedTable() {
-        
-        let selectedDayArray = realm.objects(ScheduleByDate1.self).filter("date = '\(selectedDay)'")
-        let selectedDayList = realm.objects(ScheduleList1.self).first?.scheduleList.filter("date = '\(selectedDay)'")
-        print(" 정렬 전 : \(selectedDayArray)")
-        var timeArray = [String]()
-        var timeSetArray = [String]()
-        var timeIntArray = [Int]()
-
-        for index in 0 ..< selectedDayArray.count {
-            timeArray.append(selectedDayArray[index].time)
-        }
-        print("저장된 시간: \(timeArray)")
-        for temp in 0 ..< timeArray.count {
-            timeSetArray.append(removeTarget(target: timeArray[temp], Rmtarget: ":"))
-        }
-        print(timeSetArray)
-        // int로 변형 성공
-        for index in 0 ..< timeSetArray.count {
-            timeIntArray.append(Int(timeSetArray[index])!)
-        }
-        print(timeIntArray)
-        // 정렬하기
-        if timeIntArray.count > 1 {
-            
-            for stand in 1 ..< timeIntArray.count {
-                for index in stride(from: stand, to: 0, by: -1) {
-                    if timeIntArray[index] < timeIntArray[index - 1] {
-                        timeIntArray.swapAt(index, index - 1)
-                        // selectedDayArray 정렬
-                    }else {
-                        break
-                    }
-                }
-            }
-             
-            print("정렬된 시간: \(timeIntArray)")
-            // 정렬된 timeIntArray기준으로 Realm순서 정렬
-        }
-       
-        
+    func sortedDate() {
+        var beforeSort = realm.objects(ScheduleByDate1.self)
+        beforeSort =  beforeSort.sorted(byKeyPath: "date", ascending: true)
+        //  print(beforeSort)
     }
+
     
     
    
@@ -236,7 +209,8 @@ extension ViewController {
             return true
         }
     }
-    */
+     */
+    
 
 }
 extension Date {
@@ -264,7 +238,6 @@ class ScheduleList1: Object {
     var scheduleList = List<ScheduleByDate1>()
 }
 
-/*
 class HistoryByDate1: Object {
     @objc dynamic var date: String = ""
     @objc dynamic var title: String = ""
@@ -275,7 +248,7 @@ class HistoryByDate1: Object {
 class HistoryList1: Object {
     var historyList = List<HistoryByDate1>()
 }
-*/
+
 
 
 

@@ -51,11 +51,25 @@ class TodayViewController: UIViewController,UITableViewDelegate, UITableViewData
         let scheduleListArray = realm.objects(ScheduleList1.self)
         
         dateFormatter.dateFormat = "YY년 MM월 dd일"
+        
         let toda = dateFormatter.string(from: Date())
         
+        var selectedDayArray = realm.objects(ScheduleByDate1.self).filter("date = '\(toda)'")
+        selectedDayArray = selectedDayArray.sorted(byKeyPath: "time", ascending: true)
+        
+        /*
+         cell.titleLabel.text = scheduleListArray.first?.scheduleList.filter("date = '\(selectedDay)'")[indexPath.row].title
+         cell.timeLabel.text = scheduleListArray.first?.scheduleList.filter("date = '\(selectedDay)'")[indexPath.row].time
+        */
+        
+        cell.title.text = selectedDayArray[indexPath.row].title
+        cell.time.text = selectedDayArray[indexPath.row].time
+        
+        return cell
+        /*
         cell.title.text = scheduleListArray.first?.scheduleList.filter("date = '\(toda)'")[indexPath.row].title
         cell.time.text = scheduleListArray.first?.scheduleList.filter("date = '\(toda)'")[indexPath.row].time
-        
+        */
         return cell
     }
     

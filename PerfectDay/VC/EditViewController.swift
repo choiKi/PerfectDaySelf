@@ -21,11 +21,10 @@ class EditViewController: UIViewController {
     var paramSuccess: Bool = false
     var selectedDay = ""
     var selectTime = ""
+    var successNow: Bool = false
     
     let realm = try! Realm()
     let vc = ViewController()
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +32,12 @@ class EditViewController: UIViewController {
         // Do any additional setup after loading the view.
         editTextField.text = paramTitle
         selectTime = paramTime
-        selectedDateLabel.text = selectedDay
-        print(paramTime)
-        print(selectTime)
+        successNow = paramSuccess
         
+        selectedDateLabel.text = selectedDay
+        print(paramTitle)
+        print(selectTime)
+        print(successNow)
     }
     
     @IBAction func changedDatePicker(_ sender: UIDatePicker) {
@@ -70,34 +71,46 @@ class EditViewController: UIViewController {
     @IBAction func pressEditButton(_ sender: UIButton) {
         
         overlapTest()
-        
         navigationController?.popViewController(animated: true)
         vc.tableView?.reloadData()
+        
     }
     
+    @IBAction func successChange(_ sender: UIButton) {
+        
+        if successNow == false {
+            successNow = true
+        } else {
+            successNow = false
+        }
+        print(successNow)
+        
+    }
     func overlapTest() {
         
-        var selectedDayArray = realm.objects(ScheduleByDate1.self).filter("date = '\(selectedDay)'")
-        var selectedDayArrayExistTime = selectedDayArray.filter("time = '\(selectTime)'")
+        let selectedDayArray = realm.objects(ScheduleByDate1.self).filter("date = '\(selectedDay)'")
+        let selectedDayArrayExistTime = selectedDayArray.filter("time = '\(selectTime)' && title !='\(paramTitle)'")
         
         let scheduleByDate = realm.objects(ScheduleByDate1.self)
         let updateScheduleTitle = scheduleByDate.filter("title =='\(paramTitle)' && date =='\(selectedDay)'")
         let updateScheduleTime = scheduleByDate.filter("time =='\(paramTime)' && date =='\(selectedDay)'")
+        let updateSuccess = scheduleByDate.filter("date == '\(selectedDay)' && time =='\(paramTime)' && title == '\(paramTitle)'")
         
-        
+        print("성공 타겟: \(updateSuccess)")
         if editTextField.text != "" {
             
             
             print("선택된 날짜들 :  \(selectedDayArray)")
             print("선택된 날짜의 시간 :  \(selectedDayArrayExistTime)")
-            
+            print("현재 성공 유무: \(successNow)")
+        
             if selectedDayArrayExistTime.isEmpty {
                 
                 print("겹치는 시간 없음")
-                
                 try! realm.write{
                     updateScheduleTitle.first?.title = editTextField.text!
                     updateScheduleTime.first?.time = selectTime
+                    updateSuccess.first?.success = successNow
                 }
             } else {
                 alert2()

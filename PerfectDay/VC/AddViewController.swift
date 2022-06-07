@@ -54,8 +54,8 @@ class AddViewController: UIViewController {
     
     func saveData() {
         
-        var selectedDayArray = realm.objects(ScheduleByDate1.self).filter("date = '\(selectedDay)'")
-        var selectedDayArrayExistTime = selectedDayArray.filter("time = '\(selectTime)'")
+        let selectedDayArray = realm.objects(ScheduleByDate1.self).filter("date = '\(selectedDay)'")
+        let selectedDayArrayExistTime = selectedDayArray.filter("time = '\(selectTime)'")
         if titleTextField.text != "" , selectTime != "" {
             
             let scheduleByDate = ScheduleByDate1()
